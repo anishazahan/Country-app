@@ -19,14 +19,14 @@ try{
  setCountries(data);
  setIsLoading(false);
  setError(null);
-
+ console.log(countries);
 
 }catch(error){
   setIsLoading(false);
  setError(error);
+ console.log(error);
 
 }
-
 
 }
 
@@ -37,7 +37,10 @@ try{
   return (
     <div className="App">
      <h2>Search Your country</h2>
-
+      <div className="">
+        { isLoading && <h5>Loading...</h5>}
+        { error && <h5>{error.message}</h5>}
+      </div>
 
 
     </div>
