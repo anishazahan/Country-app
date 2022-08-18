@@ -8,6 +8,7 @@ function App() {
 
 const url ='https://restcountries.com/v3.1/all';
 const [countries,setCountries] = useState([]);
+const [filterCountries,setFilterCountries] = useState(countries);
 const [isLoading,setIsLoading] = useState(true);
 const [error,setError] = useState(null);
 
@@ -19,6 +20,7 @@ try{
   const data = await response.json();
   // console.log(data);
  setCountries(data);
+ setFilterCountries(data);
  setIsLoading(false);
  setError(null);
 //  console.log(countries);
@@ -36,6 +38,16 @@ try{
     fetchData(url);
   },[])
 
+
+ const handleRemoveCountry=(name)=>{
+   const filter = filterCountries.filter((country)=>
+    country.name.common != name
+   );
+   setFilterCountries(filter);
+ }
+
+
+
   return (
     <div className="App">
      <h2 className='heading'>Search Your country</h2>
@@ -49,9 +61,9 @@ try{
 
         countries && countries.map((country)=>{
 
-          const countriesNew = {country, id:uuidv4()}
+          const countriesNew = { id:uuidv4()}
 
-          return <Country {...countriesNew} key={countriesNew.id}></Country>
+          return <Country onRemoveCountry={handleRemoveCountry} country={filterCountries} key={countriesNew.id}></Country>
         })
       }
     </div>

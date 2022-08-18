@@ -31,3 +31,8 @@ p{
   font-weight: 500;
   font-size: 14px;
 }
+
+button{
+  padding: 5px 10px;
+  background-color: rgba(255, 0, 0, 0.381);
+}
