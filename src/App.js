@@ -39,7 +39,7 @@ try{
   return (
     <div className="App">
      <h2 className='heading'>Search Your country</h2>
-      <div className="">
+      <div className="error">
         { isLoading && <h5>Loading...</h5>}
         { error && <h5>{error.message}</h5>}
       </div>
